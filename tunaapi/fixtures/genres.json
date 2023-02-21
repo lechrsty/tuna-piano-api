@@ -1,0 +1,37 @@
+[
+    {
+        "model": "tunaapi.genre",
+        "pk": 1,
+        "fields": {
+            "description": "Shoegaze"
+        }
+    },
+    {
+        "model": "tunaapi.genre",
+        "pk": 2,
+        "fields": {
+        "description": "Brazilian jazz"
+        }
+    },
+    {
+        "model": "tunaapi.genre",
+        "pk": 3,
+        "fields": {
+            "description": "Psychedelic rock"
+        }
+    },
+    {
+        "model": "tunaapi.genre",
+        "pk": 4,
+        "fields": {
+            "description": "Bip boppin goo goppin shoe stompin hip rocking sock hoppin blues"
+        }
+    },
+    {
+        "model": "tunaapi.genre",
+        "pk": 5,
+        "fields": {
+            "description": "Pop"
+        }
+    }
+]

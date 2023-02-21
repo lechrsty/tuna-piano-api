@@ -1,0 +1,13 @@
+[
+    {
+        "model": "tunaapi.song",
+        "pk": 1,
+        "fields": {
+            "title": "Song Title",
+            "album": "Album Title",
+            "length": 342,
+            "genre": 5,
+            "artist": 1
+            }
+        }
+]
