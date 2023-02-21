@@ -17,11 +17,13 @@ from django.core.management import call_command
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
-from tunaapi.views import ArtistView, SongView
+from tunaapi.views import ArtistView, SongView, GenreView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'artists', ArtistView, 'artist')
 router.register(r'songs', SongView, 'song')
+router.register(r'genres', GenreView, 'genre')
+
 
 urlpatterns = [
     path('', include(router.urls)),

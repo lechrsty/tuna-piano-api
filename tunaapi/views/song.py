@@ -21,23 +21,20 @@ class SongView(ViewSet):
         serializer = SongSerializer(songs, many=True)
         return Response(serializer.data)
 
-    # def create(self, request):
-    #     """Handle POST operations
+    def create(self, request):
 
-    #     Returns
-    #         Response -- JSON serialized song instance
-    #     """
-    #     song = Song.objects.get(user=request.auth.user)
-    #     genre = Genre.objects.get(pk=request.data["genre"])
+        artist = Artist.objects.get(pk=request.data["artist"])
+        genre = Genre.objects.get(pk=request.data["genre"])
 
-    #     song = Song.objects.create(
-    #         song=song,
-    #         name=request.data["name"],
-    #         age=request.data["age"],
-    #         bio=request.data["bio"]
-    #     )
-    #     serializer = SongSerializer(song)
-    #     return Response(serializer.data)
+        song = Song.objects.create(
+            title=request.data["title"],
+            album=request.data["album"],
+            length=request.data["length"],
+            genre=genre,
+            artist=artist
+        )
+        serializer = SongSerializer(song)
+        return Response(serializer.data)
 
 class ArtistSongSerializer(serializers.ModelSerializer):
 

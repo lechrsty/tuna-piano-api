@@ -21,35 +21,31 @@ class ArtistView(ViewSet):
         serializer = ArtistSerializer(artists, many=True)
         return Response(serializer.data)
 
-    # def create(self, request):
-    #     """Handle POST operations
+    def create(self, request):
 
-    #     Returns
-    #         Response -- JSON serialized artist instance
-    #     """
-    #     artist = Artist.objects.get(user=request.auth.user)
-    #     genre = Genre.objects.get(pk=request.data["genre"])
+        # songs = Song.objects.get(pk=request.data["songs"])
 
-    #     artist = Artist.objects.create(
-    #         artist=artist,
-    #         name=request.data["name"],
-    #         age=request.data["age"],
-    #         bio=request.data["bio"]
-    #     )
-    #     serializer = ArtistSerializer(artist)
-    #     return Response(serializer.data)
+        artist = Artist.objects.create(
+            name=request.data["name"],
+            age=request.data["age"],
+            bio=request.data["bio"]
+            # songs = songs
+        )
 
-class SongsArtistSerializer(serializers.ModelSerializer):
+        serializer = ArtistSerializer(artist)
+        return Response(serializer.data)
 
-    class Meta:
-        model = Song
-        fields = ('id', 'title', 'album' )
+# class SongsArtistSerializer(serializers.ModelSerializer):
+
+#     class Meta:
+#         model = Song
+#         fields = ('id', 'title', 'album' )
 
 class ArtistSerializer(serializers.ModelSerializer):
 
-    songs = SongsArtistSerializer(many=False)
+    # songs = SongsArtistSerializer(many=False)
 
     class Meta:
         model = Artist
-        fields = ('id', 'name', 'age', 'bio', 'songs')
+        fields = ('id', 'name', 'age', 'bio')
         depth = 1
