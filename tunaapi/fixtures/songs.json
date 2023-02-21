@@ -9,5 +9,16 @@
             "genre": 5,
             "artist": 1
             }
-        }
+    },
+    {
+        "model": "tunaapi.song",
+        "pk": 2,
+        "fields": {
+            "title": "Song Number Two",
+            "album": "Album Title Two",
+            "length": 342,
+            "genre": 4,
+            "artist": 1
+            }
+    }
 ]
