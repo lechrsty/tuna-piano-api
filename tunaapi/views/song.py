@@ -14,12 +14,23 @@ class SongView(ViewSet):
         serializer = SongSerializer(song)
         return Response(serializer.data)
 
-
     def list(self, request):
-
-        songs = Song.objects.all()
-        serializer = SongSerializer(songs, many=True)
+        queryset = self.get_queryset()
+        serializer = SongSerializer(queryset, many=True)
         return Response(serializer.data)
+
+    def get_queryset(self):
+        queryset = Song.objects.all()
+
+        genre_id = self.request.query_params.get('genre_id')
+        if genre_id is not None:
+            queryset = queryset.filter(genre_id=genre_id)
+
+        artist_id = self.request.query_params.get('artist_id')
+        if artist_id is not None:
+            queryset = queryset.filter(artist_id=artist_id)
+
+        return queryset
 
     def create(self, request):
 
