@@ -1,1 +1,1 @@
-# from .test_artist import ArtistTests
+from .test_artist import ArtistTests
